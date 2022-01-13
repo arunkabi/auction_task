@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+<body>
+	<h1>Hello <%=current_user.user_name%>!</h1>
+	<div>
+		<%=link_to "Create New", new_products_path, class: 'btn btn-primary btn-sm'%>
+	</div>
+	<%if @all_products.present?%>
+		<div class="sort-div mb-2">
+			<label>Sort by:</label>
+			<%= select_tag('sorting', options_for_select([["Recent Projects", 1], ["Category", 2], ["User Name", 3], ["Product Name", 4]], params[:sort_by].present? ? params[:sort_by] : 1 ), remote: true)%>
+		</div>
+		<div>
+			<table id="products" class="product_content">
+				<thead>
+					<th>Product Name</th>
+					<th>User Name</th>
+					<th>Category</th>
+					<th>Delete</th>
+				</thead>
+				<tbody>
+					<%@all_products.each do |product|%>
+						<tr>
+							<td><%= link_to product.product_name, edit_products_path(id: product)%></td>
+							<td><%=product.user.user_name%></td>
+							<td><%=product.category.category_name%></td>
+							<td align="center"><%= link_to "Delete", products_path(id: product), :data => {:confirm => 'Are you sure?'}, method: :delete, class: 'btn btn-primary btn-sm'%></td>
+						</tr>
+					<%end%>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="digg_pagination" >
+			<button class="btn btn-primary btn-sm btn-prev" id="previous_page" onclick="pagination(1)">Prevoius</button>
+				&nbsp;&nbsp;
+			<button class="btn btn-primary btn-sm btn-nxt" id="next_page" onclick="pagination(2)">Next</button> 
+	  </div>
+	<%else%>
+		<center>
+			<p>No products found!!! Please add product.</p>
+		</center>
+	<%end%>
+</body>
+<script type="text/javascript">
+	$(".btn-prev").hide();
+
+	$("#sorting").change(function() {
+		var sort_by = $(this).val();
+
+		$.ajax({
+	    url: "<%= sorting_products_path %>",
+	    type: "GET",
+	  	data: {
+	      sort_by: sort_by,
+	  	},
+	    success: function(data) {
+	      var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + "?sort_by="+sort_by;
+      	window.history.pushState({ path: refresh }, '', refresh);
+	    },
+	    error: function(error) {
+	        console.log('failure')
+	    }
+		});
+	});
+
+	function pagination(type){
+		var sort_by = $("#sorting").val();
+		if (type == 1){
+			var page = "<%=@page.present? ? (@page.to_i - 1) : 0%>";
+		} else {
+			var page = "<%=@page.present? ? (@page.to_i + 1) : 0%>";
+		}
+
+		$.ajax({
+	    url: "<%= pagination_products_path %>",
+	    type: "GET",
+	  	data: {
+	      sort_by: sort_by,
+	      page: page,
+	  	},
+	    success: function(data) {
+	      var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + "?sort_by="+sort_by+"&page="+page;
+      	window.history.pushState({ path: refresh }, '', refresh);
+	    },
+	    error: function(error) {
+	        console.log('failure')
+	    }
+		});
+	}
+</script>
+</html>

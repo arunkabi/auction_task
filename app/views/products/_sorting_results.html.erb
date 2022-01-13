@@ -1,0 +1,18 @@
+<table id="products" class="product_content">
+	<thead>
+		<th>Product Name</th>
+		<th>User Name</th>
+		<th>Category</th>
+		<th>Delete</th>
+	</thead>
+	<tbody>
+		<%@all_products.each do |product|%>
+			<tr>
+				<td><%= link_to product.product_name, edit_products_path(id: product)%></td>
+				<td><%=product.user.user_name%></td>
+				<td><%=product.category.category_name%></td>
+				<td align="center"><%= link_to "Delete", products_path(id: product), :data => {:confirm => 'Are you sure?'}, method: :delete, class: 'btn btn-primary btn-sm'%></td>
+			</tr>
+		<%end%>
+	</tbody>
+</table>

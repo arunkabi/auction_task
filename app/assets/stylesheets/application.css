@@ -1,0 +1,272 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Merriweather:400,700');
+
+
+.navbar {
+  margin-bottom: 0;
+  background: #00b3b3;
+}
+
+body {
+  background: hsl(240deg 8% 93%);
+  color: hsl(0deg 0% 13%);
+  font-family: 'Merriweather', sans-serif;
+  padding: 15px;
+}
+
+h1,
+h2 {
+  font-weight: bold;
+}
+
+p {
+  font-size: 16px;
+}
+
+a:visited {
+  color: #00b3b3;
+}
+
+.jumbotron {
+  background: #0048CD;
+  color: #fff;
+  text-align: center;
+  p {
+    color: #fff;
+    font-size: 26px;
+  }
+}
+
+.link {
+  color: #fff;
+}
+
+.btn-primary {
+  background-color: #249f9f !important;
+  color: #fff !important;
+  border-color: #249f9f !important;
+  margin-bottom: 5px;
+}
+
+.btn-sm {
+  /*background-color: #fff;*/
+  display: inline-block;
+}
+
+img,
+video,
+audio {
+  margin-top: 20px;
+  max-width: 80%;
+}
+
+caption {
+  float: left;
+  clear: both;
+}
+
+input[type=email], input[type=password], input[type=text]{
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+select {
+  width: 40%;
+  padding: 12px 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 20%;
+  background-color: #00b3b3;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input:focus {
+  border: 1px solid red !important;
+}
+
+input[type=submit]:hover {
+  background-color: #249f9f;
+}
+
+/*flash*/
+.alert-error {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: center;
+    width: 50%;
+    min-height: 50px;
+    padding: 15px;
+    position: relative;
+    left: 25rem;
+ }
+
+.alert-alert, .alert {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: center;
+    width: 50%;
+    min-height: 50px;
+    padding: 15px;
+    position: relative;
+    left: 25rem;
+ }
+
+.alert-success, .notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: center;
+    width: 50%;
+    min-height: 50px;
+    padding: 15px;
+    position: relative;
+    left: 25rem;
+ }
+
+.alert-notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: center;
+    width: 50%;
+    min-height: 50px;
+    padding: 15px;
+    position: relative;
+    left: 25rem;
+ }
+
+#products {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#products td, #products th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#products tr{
+  background-color: #F3F5F7;
+}
+/*#products tr:nth-child(even){background-color: #f2f2f2;}
+
+#products tr:hover {background-color: #ddd;}*/
+
+#products th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: hsl(180deg 51% 52%);
+  color: white;
+}
+.digg_pagination {
+    float: right;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 0.8rem;
+}
+.r_drop_down {
+    margin-right: 15px;
+    line-height: 48px;
+}
+.digg_pagination .previous_page, .digg_pagination .next_page {
+    background: #4db6ac;
+    color: #fff !important;
+    border-radius: 3px;
+    margin-left: 10px;
+    height: 48px;
+    width: 65px;
+    text-align: center;
+    line-height: 48px;
+}
+span.disabled {
+    cursor: not-allowed;
+    opacity: 0.52;
+}
+.page_info {
+    line-height: 48px;
+}
+.logout-btn{
+  float: right;
+}
+.sort-div{
+  float: right;
+  width: 20%;
+}
+.filteration-sorting {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+#sorting{
+  width: 75% !important;
+}
+.btn {
+    display: inline-block;
+    font-family: inherit;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    border: none;
+    box-shadow: none;
+    touch-action: manipulation;
+    /* -webkit-appearance: button; */
+}
+.btn-action-bar--v1 {
+  background: #80cbc4;
+  color: #fff !important;
+  border: 1px solid #ddd;
+  min-height: 30px;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 24%);
+  text-decoration: none;
+}
+#product_category_id{
+  width: 20% !important;
+}
+a {
+  color: #4db6ac !important;
+  text-decoration: none !important;
+}

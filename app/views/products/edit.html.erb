@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>Edit product</h1>
+		<% if @product.errors.full_messages.any? %>
+			<p class="alert">
+		  	<% @product.errors.full_messages.each do |error_message| %>
+		    	<%= error_message%> <br />
+		  	<% end %>
+		  </p>
+		<% end %>
+
+		<div>
+			<%=link_to "Back", root_path%>
+		</div>
+		<div class="form-div">
+			<%= form_with model: @product, url: products_path(id: @product.id), method: :patch, local: true do |form| %>
+				<div>
+					<%= form.label :product_name, "Product Name :" %>
+					<%= form.text_field :product_name %>
+				</div>
+
+				<div>
+					<%= form.label :category_id, "Category :" %>
+					<%= form.select :category_id, Category.all.map{|e| [e.category_name, e.id]}.insert(0, "Select Category"), selected: @product.category_id %>
+				</div>
+			  <%=form.hidden_field :user_id, :value => current_user.id%>
+			  <%= form.submit %>
+			<% end %>
+		</div>
+	</body>
+</html>

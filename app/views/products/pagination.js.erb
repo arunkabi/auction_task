@@ -1,0 +1,37 @@
+$('.product_content').html("<%= j (render partial: 'sorting_results') %>")
+
+function pagination(type){
+	var sort_by = $("#sorting").val();
+	if (type == 1){
+		var page = "<%=@page.present? ? (@page.to_i - 1) : 0%>";
+	} else {
+		var page = "<%=@page.present? ? (@page.to_i + 1) : 0%>";
+	}
+
+	$.ajax({
+    url: "<%= pagination_products_path %>",
+    type: "GET",
+  	data: {
+      sort_by: sort_by,
+      page: page,
+  	},
+    success: function(data) {
+      var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + "?sort_by="+sort_by+"&page="+page;
+    	window.history.pushState({ path: refresh }, '', refresh);
+    },
+    error: function(error) {
+        console.log('failure')
+    }
+	});
+}
+
+<%if @page.to_i == 0%>
+	$(".btn-prev").hide();
+<%else%>
+	$(".btn-prev").show();
+<%end%>
+<%if @original_size.to_i == @page.to_i%>
+	$(".btn-nxt").hide();
+<%else%>
+	$(".btn-nxt").show();
+<%end%>
