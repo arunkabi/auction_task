@@ -14,18 +14,14 @@
  *= require_self
  */
 
-@import "~bootstrap/scss/bootstrap";
-@import url('https://fonts.googleapis.com/css?family=Merriweather:400,700');
-
-
 .navbar {
   margin-bottom: 0;
   background: #00b3b3;
 }
 
 body {
-  background: hsl(240deg 8% 93%);
-  color: hsl(0deg 0% 13%);
+  background: #ececef;
+  color: #212121;
   font-family: 'Merriweather', sans-serif;
   padding: 15px;
 }
@@ -62,6 +58,8 @@ a:visited {
   color: #fff !important;
   border-color: #249f9f !important;
   margin-bottom: 5px;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .btn-sm {
@@ -191,7 +189,7 @@ input[type=submit]:hover {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
-  background-color: hsl(180deg 51% 52%);
+  background-color: #46c3c3;
   color: white;
 }
 .digg_pagination {
@@ -254,14 +252,6 @@ span.disabled {
     box-shadow: none;
     touch-action: manipulation;
     /* -webkit-appearance: button; */
-}
-.btn-action-bar--v1 {
-  background: #80cbc4;
-  color: #fff !important;
-  border: 1px solid #ddd;
-  min-height: 30px;
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 24%);
-  text-decoration: none;
 }
 #product_category_id{
   width: 20% !important;
